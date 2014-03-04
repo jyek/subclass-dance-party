@@ -48,7 +48,9 @@ Dancer.prototype.HR11 = function(start, end){
   var url = ['img/allegra.png', 'img/christina.png', 'img/cowboy.png', 'img/fabrice.png',
   'img/justin.png', 'img/latif.png', 'img/michelin.png', 'img/stephan.png',
   'img/willson.png'];
-  var index = start + Math.round(Math.random()*(end-start)) ;
+  start = start || 0;
+  end = end || url.length - 1;
+  var index = start + Math.round(Math.random() * (end - start)) ;
   this.$node.css({
     'background-image':'url('+url[index]+')',
     'background-repeat':'no-repeat',

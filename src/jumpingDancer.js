@@ -25,8 +25,8 @@ JumpingDancer.prototype.step = function(){
     }
   }
 
-  this._top = Math.random()*window.innerHeight;
-  this._left = Math.random()*window.innerWidth;
+  this._top += 30 * (Math.random() - 0.5) % window.innerWidth;
+  this._left += 30 * (Math.random() - 0.5) % window.innerWidth;
   this.setPosition();
   Dancer.prototype.step.call(this);
 };
