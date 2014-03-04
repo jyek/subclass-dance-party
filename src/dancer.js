@@ -8,8 +8,9 @@ var Dancer = function(top, left, timeBetweenSteps){
   this._timeBetweenSteps = timeBetweenSteps;
 
   this.step();
-  // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
-  // this one sets the position to some random default point within the body
+  // now that we have defined the dancer object, we can start setting up 
+  // important parts of it by calling the methods we wrote this one sets 
+  // the position to some random default point within the body
   this.setPosition();
 };
 
@@ -28,7 +29,6 @@ Dancer.prototype.step = function(){
 Dancer.prototype.setPosition = function(){
   // Use css top and left properties to position our <span> tag
   // where it belongs on the page. See http://api.jquery.com/css/
-  //
   this.$node.css({
     top: this._top,
     left: this._left
@@ -36,15 +36,9 @@ Dancer.prototype.setPosition = function(){
 };
 
 Dancer.prototype.changeColor = function(){
-  // border:10px solid rgb(Math.rand()*255, Math.rand()*255, Math.rand()*255);
-  var red  = Math.round(Math.random()*255)  ;
-  var green = Math.round(Math.random()*255) ;
-  var blue = Math.round(Math.random()*255) ;
-  var width = 10+30*Math.random();
-  var border = width + "px solid rgb("+ red +','+ green +','+ blue + ")";
-  this.$node.css({
-    "border":border
-  });
+  var border = 10+30*Math.random() + "px solid rgb(";
+  for(var i = 0; i<3; i++, border += Math.round(Math.random()*255) + ",");
+  this.$node.css({"border":border.replace(/,$/,')')});
 };
 
 Dancer.prototype.lineUp = function(i){
