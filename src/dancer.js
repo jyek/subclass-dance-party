@@ -16,9 +16,6 @@ var Dancer = function(top, left, timeBetweenSteps){
 Dancer.prototype.step = function(){
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  console.log('step');
-  console.log(this);
-
   var wrap = function(func, context){
     return function(){
       func.call(context);
@@ -35,5 +32,24 @@ Dancer.prototype.setPosition = function(){
   this.$node.css({
     top: this._top,
     left: this._left
+  });
+};
+
+Dancer.prototype.changeColor = function(){
+  // border:10px solid rgb(Math.rand()*255, Math.rand()*255, Math.rand()*255);
+  var red  = Math.round(Math.random()*255)  ;
+  var green = Math.round(Math.random()*255) ;
+  var blue = Math.round(Math.random()*255) ;
+  var width = 10+30*Math.random();
+  var border = width + "px solid rgb("+ red +','+ green +','+ blue + ")";
+  this.$node.css({
+    "border":border
+  });
+};
+
+Dancer.prototype.lineUp = function(i){
+  this.$node.css({
+    top: '50%',
+    left: window.innerWidth / dancers.length * (i + 0.5)
   });
 };
