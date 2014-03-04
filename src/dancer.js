@@ -15,8 +15,6 @@ var Dancer = function(top, left, timeBetweenSteps){
 };
 
 Dancer.prototype.step = function(){
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
   var wrap = function(func, context){
     return function(){
       func.call(context);
@@ -27,8 +25,6 @@ Dancer.prototype.step = function(){
 };
 
 Dancer.prototype.setPosition = function(){
-  // Use css top and left properties to position our <span> tag
-  // where it belongs on the page. See http://api.jquery.com/css/
   this.$node.css({
     top: this._top,
     left: this._left
@@ -47,3 +43,19 @@ Dancer.prototype.lineUp = function(i){
     left: window.innerWidth / dancers.length * (i + 0.5)
   });
 };
+
+Dancer.prototype.HR11 = function(start, end){
+  var url = ['img/allegra.png', 'img/christina.png', 'img/cowboy.png', 'img/fabrice.png',
+  'img/justin.png', 'img/latif.png', 'img/michelin.png', 'img/stephan.png',
+  'img/willson.png'];
+  var index = start + Math.round(Math.random()*(end-start)) ;
+  this.$node.css({
+    'background-image':'url('+url[index]+')',
+    'background-repeat':'no-repeat',
+    'width':'30%',
+    'height':'60%'
+  });
+};
+
+
+
